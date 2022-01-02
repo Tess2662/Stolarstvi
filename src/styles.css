@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --first-color: #352315;
+  --second-color: #463426;
+  --third-color: #574537;
+  --fourth-color: #685648;
+  --fifth-color: #796759;
+}
+
+
+body {
+  background-color: var(--first-color);
+  color: whitesmoke;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+table {
+  border-spacing: 15px;
+  width: 100%;
+}
+
+td {
+  border: 5px solid var(--third-color);
+  cursor: pointer;
+}
+
+td:hover {
+  border-color: var(--fourth-color);
+}
+
+#routing {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+@media screen and (min-width: 768px) {
+  #routing {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+body * {
+  background-color: var(--second-color);
+}
+
+* {
+  margin: 0;
+
+}
+
+
