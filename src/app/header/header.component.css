@@ -1,7 +1,16 @@
-a {
-  padding: 16px 14px;
+nav > a {
   float: left;
 }
+
+nav a {
+  padding: 16px 14px;
+  display: block;
+}
+
+#second-logo {
+  display: none;
+}
+
 a:hover {
   background-color: var(--third-color);
 }
@@ -12,35 +21,83 @@ nav {
   position: sticky;
   top: 0;
   overflow: hidden;
-}
-
-hr {
-  width: 100%;
-  color: var(--first-color);
-  border: 5px solid var(--first-color);
+  border-bottom: 10px solid var(--first-color);
 }
 
 header {
+
   width: 100%;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 10px solid var(--first-color);
 }
+
 
 h1 {
+  margin: auto 0;
   padding: 20px;
   text-align: center;
+
 }
-* {
-  margin: 0;
+img {
+  margin: 0 auto;
+  width: 100px;
+  height: auto;
+
 }
 
-@media screen and (min-width: 1366px) {
-  nav {
-    width: fit-content;
-    float: left;
+@media screen and (min-width: 768px){
+  #second-logo {
+    display: initial;
   }
-  a {
-    display: block;
-    float: none;
+  img {
+    width: 150px;
+  }
+  header {
+    flex-direction: row;
   }
 }
+
+
+
+
+
+
+/*.container {*/
+/*  position: relative;*/
+/*  float:left*/
+
+/*}*/
+/*.container:hover .content {*/
+/*  display: block;*/
+/*}*/
+/*.content {*/
+/*  z-index: 1;*/
+/*  position:absolute;*/
+/*  display:none;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@media screen and (min-width: 1366px) {*/
+/*  nav {*/
+/*    width: fit-content;*/
+/*    float: left;*/
+/*  }*/
+/*  a {*/
+/*    display: block;*/
+/*    float: none;*/
+/*  }*/
+/*}*/
 

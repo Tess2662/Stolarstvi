@@ -1,52 +1,38 @@
 import { Injectable } from '@angular/core';
 import {VyrobekGroup} from "./vyrobek-group";
 import {Vyrobek} from "./vyrobek";
+import {NAMES} from "./data";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VyrobkyService {
 
-  getVyrobky(id?: number): VyrobekGroup[] {
-    //return one piece of every vyrobek
-    let columns = 3;
-    let rows = 2;
-    let names = ["Židle", "Stoly", "Schody","Dveře", "Kuchyně", "Ostatní"]
-    let normalized = ["zidle","stoly","schody","dvere","kuchyne","ostatni"]
 
-    let vyrobky: VyrobekGroup[] = [];
-    //id counter
-    let c = 0;
+  getVyrobky(id?: number): VyrobekGroup {
+    let names = NAMES;
+    let delky = [12, 12, 6, 7, 3];
+    let vyrobky: VyrobekGroup = {name: "Invalid", vyrobky: []}
     if (id == undefined) {
-      for (let i: number= 0;i<rows;i++) {
-        vyrobky.push({vyrobky: [], name: "Výrobky"})
-
-        for (let j: number = 0;j<columns;j++) {
-
-          // /assets/thumbnails/....
-          vyrobky[i]["vyrobky"].push({id: c,name: names[c],thumbnail: "/assets/zidle/0.jpg"});
-          c++;
-        }
+      vyrobky = {name: "Výrobky",vyrobky: []}
+      for (let x=0;x<5;x++) {
+        let name = "/assets/thumbnails/"+x+".jpg"
+        // let name = "/assets/zidle/thumm.jpg"
+        vyrobky["vyrobky"].push({id: x, name: names[x], thumbnail: name })
       }
     }
-    else if (id < normalized.length){
-      for (let i =0;i<rows;i++) {
-        let j = 0;
-        vyrobky.push({vyrobky: [], name: names[id]})
-        for (j;j<columns;j++) {
-          let name = "/assets/zidle/0.jpg";
-          if (id == 3 || id == 2) {
-            name = "/assets/"+normalized[id]+"/"+(c)+".jpg"
-          }
-          // /assets/+normalized[c]+/....
-          vyrobky[i]["vyrobky"].push({id:c, name: names[c],thumbnail: name})
-          c++;
-        }
-
+    //if id is valid
+    else if (id < names.length) {
+      vyrobky = {name: names[id],vyrobky: []}
+      for (let x=0;x<delky[id];x++) {
+        let name = "/assets/"+id+"/"+x+".jpg"
+        // let name = "/assets/zidle/0.jpg"
+        vyrobky["vyrobky"].push({id: x, name: names[x], thumbnail: name })
       }
     }
     return vyrobky;
-  }
+
+}
 
   constructor() { }
 }

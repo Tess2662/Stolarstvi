@@ -1,9 +1,10 @@
 <h2>{{title}}</h2>
-<table *ngIf="vyrobky">
-  <tr *ngFor="let group of vyrobky">
-    <td *ngFor="let vyrobek of group.vyrobky">
-      <img src="{{vyrobek.thumbnail}}" alt="{{vyrobek.id}}">
-    </td>
-  </tr>
 
-</table>
+<div class="flex-container" *ngIf="vyrobky">
+  <div class="flex-item" *ngFor="let vyrobek of vyrobky.vyrobky">
+    <img src="{{vyrobek.thumbnail}}" alt="{{vyrobek.id}}" (click)="showImage(vyrobek.thumbnail)">
+  </div>
+
+</div>
+
+

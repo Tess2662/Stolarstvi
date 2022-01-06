@@ -8,13 +8,15 @@ import {VyrobkyService} from "../vyrobky.service";
   styleUrls: ['./vyrobky.component.css']
 })
 export class VyrobkyComponent implements OnInit {
-  vyrobky?: VyrobekGroup[];
+  // vyrobky?: VyrobekGroup[];
+  vyrobky?: VyrobekGroup;
 
 
   constructor(private vyrobkyService: VyrobkyService) { }
 
   ngOnInit(): void {
-    this.vyrobky=this.vyrobkyService.getVyrobky();
+    // this.vyrobky=this.vyrobkyService.getVyrobkyGroup();
+    this.vyrobky = this.vyrobkyService.getVyrobky();
   }
 
 }

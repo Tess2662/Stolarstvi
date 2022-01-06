@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {VyrobekGroup} from "../vyrobek-group";
 import {VyrobkyService} from "../vyrobky.service"
+import { Location} from "@angular/common";
 
 @Component({
   selector: 'app-galerie',
@@ -9,24 +10,23 @@ import {VyrobkyService} from "../vyrobky.service"
   styleUrls: ['./galerie.component.css']
 })
 export class GalerieComponent implements OnInit {
-  vyrobky?: VyrobekGroup[];
+  vyrobky?: VyrobekGroup;
   title: string = "";
 
-  getGalerie(): void {
+  constructor(private location: Location,private route: ActivatedRoute, private vyrobekService: VyrobkyService) { }
 
+  showImage(thumbnail: string): void {
+
+    window.location.href = thumbnail;
   }
-
-
-  constructor(private route: ActivatedRoute, private vyrobekService: VyrobkyService) { }
 
   ngOnInit(): void {
-    let id = Number(this.route.snapshot.paramMap.get("id"));
-    this.vyrobky = this.vyrobekService.getVyrobky(id);
-    if (this.vyrobky.length > 0) {
-      this.title = this.vyrobky[0]["name"];
-    }
-
-
-  }
+    // to reload content after only id changes
+    this.route.params.subscribe(params => {
+      let id = Number(this.route.snapshot.paramMap.get("id"));
+      this.vyrobky = this.vyrobekService.getVyrobky(id);
+      this.title = this.vyrobky.name
+    });
+      }
 
 }
